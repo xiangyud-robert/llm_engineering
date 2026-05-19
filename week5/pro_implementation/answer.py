@@ -107,10 +107,10 @@ IMPORTANT: Respond ONLY with the precise knowledgebase query, nothing else.
     return response.choices[0].message.content
 
 
-def merge_chunks(chunks, reranked):
+def merge_chunks(chunks, additional_chunks):
     merged = chunks[:]
     existing = [chunk.page_content for chunk in chunks]
-    for chunk in reranked:
+    for chunk in additional_chunks:
         if chunk.page_content not in existing:
             merged.append(chunk)
     return merged
